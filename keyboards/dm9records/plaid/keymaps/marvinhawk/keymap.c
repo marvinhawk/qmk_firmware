@@ -24,6 +24,7 @@ enum plaid_layers {
   _DVORAK,
   _LOWER,
   _RAISE,
+  _NUM,
   _PLOVER,
   _DK,
   _ADJUST
@@ -50,6 +51,8 @@ enum plaid_keycodes {
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+
+#define SPC_NUM LT(_NUM, KC_SPC)
 
 #define ENT_SFT MT(MOD_RSFT, KC_ENT)
 #define HOME_A LGUI_T(KC_A)
@@ -100,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_ESC,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_AE, DK_OSTR,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  DK_MINS, ENT_SFT,
-    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_BSPC, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_BSPC, SPC_NUM, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
@@ -173,6 +176,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_4,    KC_5,    KC_6,    DK_LBRC, DK_RBRC, KC_BSLS,
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_1,    KC_2,    KC_3,    DK_LCBR, DK_RCBR, KC_ENT,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_PGDN, KC_PGUP, KC_MPLY
+),
+
+/* Numbers
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |   7  |   8  |   9  |      |      |Delete|
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |   4  |   5  |   6  |      |      |      |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |   1  |   2  |   3  |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |   0  |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NUM] = LAYOUT_plaid_grid(
+    _______, _______, _______, _______, _______, _______,    KC_7,    KC_8,    KC_9, _______, _______, KC_DEL,
+    _______, _______, _______, _______, _______, _______,    KC_4,    KC_5,    KC_6, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,    KC_1,    KC_2,    KC_3, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,    KC_0, _______, _______, _______, _______
 ),
 
 /* Plover layer (http://opensteno.org)
