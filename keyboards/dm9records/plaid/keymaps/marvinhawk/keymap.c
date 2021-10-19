@@ -58,6 +58,7 @@ enum plaid_keycodes {
 
 #define ENT_SFT MT(MOD_RSFT, KC_ENT)
 #define LABK_SFT MT(MOD_LSFT, DK_LABK)
+#define TAB_GUI MT(MOD_LGUI, KC_TAB)
 #define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LSFT_T(KC_D)
@@ -99,14 +100,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |   <  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower | Bksp |Space |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | RAlt | Alt  | Tab  |Lower | Bksp |Space |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    DK_ARNG,
     ESC_NAV,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_AE, DK_OSTR,
     LABK_SFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  DK_MINS, ENT_SFT,
-    KC_LCTL,  KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_BSPC, SPC_NUM, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTL,  KC_RALT, KC_LALT, TAB_GUI, LOWER,   KC_BSPC, SPC_NUM, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
