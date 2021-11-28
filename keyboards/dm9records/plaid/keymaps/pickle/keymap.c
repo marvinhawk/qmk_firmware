@@ -87,14 +87,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |      |      |   N  |   M  |   ,  |   .  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower | Tab  |Enter |Raise | Left | Down |  Up  |Right |
+ * |      |      |      | Tab  | Bspc |      |      |Space |Enter |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,   
     HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,   HOME_J,  HOME_K,  HOME_L,  NAV_AE,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LOWER,   KC_TAB, ENT_NUM, RAISE,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB, LOWER,    KC_ESC,  XXXXXXX, RAISE,  ENT_NUM, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Lower
