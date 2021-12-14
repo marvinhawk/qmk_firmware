@@ -42,8 +42,8 @@ enum plaid_keycodes {
 };
 
 #define LOWER LT(_LOWER, KC_BSPC)
-#define RAISE LT(_RAISE, KC_ENT)
-#define SPC_NUM LT(_NUM, KC_SPC)
+#define RAISE LT(_RAISE, KC_SPC)
+#define ENT_NUM LT(_NUM, KC_ENT)
 
 #define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)
@@ -53,6 +53,9 @@ enum plaid_keycodes {
 #define HOME_K RSFT_T(KC_K)
 #define HOME_L RALT_T(KC_L)
 #define NAV_AE LT(_NAV, DK_AE)
+
+// Lock (Pop-OS)
+#define LOCK G(KC_ESC)
 
 
 // array of keys considered modifiers for led purposes
@@ -87,14 +90,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |      |      |   N  |   M  |   ,  |   .  |   -  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |  Esc | Tab  | Bspc |      |      |Enter |Space |      |      |      |
+ * |      |      |  Esc | Tab  | Bspc |      |      |Enter |Space |Delete|      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
-    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,   
-    HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,   HOME_J,  HOME_K,  HOME_L,  NAV_AE,
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-    XXXXXXX, XXXXXXX, KC_ESC,  LOWER,   KC_TAB,  XXXXXXX, XXXXXXX, RAISE,  SPC_NUM, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
+    HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,  XXXXXXX, XXXXXXX, ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, XXXXXXX
 ),
 
 /* Lower
@@ -145,9 +148,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_NUM] = LAYOUT_plaid_grid(
-    _______, _______, _______, _______, _______, _______, _______,    _______,    KC_7,    KC_8,    KC_9,  KC_DEL,
-    _______, _______, _______, _______, _______, _______, _______,    _______,    KC_4,    KC_5,    KC_6, _______,
-    _______, _______, _______, _______, _______, _______, _______,    _______,    KC_1,    KC_2,    KC_3, _______,
+    _______, _______, _______, _______, _______, _______, _______,    XXXXXXX,    KC_7,    KC_8,    KC_9,  KC_DEL,
+    _______, _______, _______, _______, _______, _______, _______,    XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX,
+    _______, _______, _______, _______, _______, _______, _______,    XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______,    KC_0, _______, _______
 ),
 
