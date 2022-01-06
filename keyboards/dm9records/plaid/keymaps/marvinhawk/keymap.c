@@ -90,50 +90,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |      |      |   N  |   M  |   ,  |   .  |   -  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Lock |      |  Esc | Tab  | Bspc |      |      |Enter |Space |Delete|      |      |
+ * | Lock |      |  Esc | Bspc |  Tab |      |      |Enter |Space |Delete|      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
-    KC_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
-    HOME_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    KC_A,    HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
+    HOME_Z,  KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
     LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,  XXXXXXX, XXXXXXX, ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, XXXXXXX
 ),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |      |   /  |   (  |   )  |   =  |   Å  |
+ * |   ~  |   !  |   @  |   #  |   $  |  F1  |  F2  |   /  |   (  |   )  |   =  |   Å  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |      |   ?  |   [  |   ]  |   ^  |   Ø  |
+ * |      |      |      |      |      |  F3  |  F4  |   ?  |   [  |   ]  |   ^  |   Ø  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |      |   *  |   {  |   }  |   `  |   |  |
+ * |      |      |      |      |      |  F5  |  F6  |   *  |   {  |   }  |   `  |   |  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |Enter |Space | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |      |      |      |      | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_plaid_grid(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, DK_SLSH,    DK_LPRN,    DK_RPRN, DK_EQL,  DK_ARNG,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   DK_QUES,    DK_LBRC,    DK_RBRC, DK_CIRC, DK_OSTR,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  DK_ASTR,    DK_LCBR,    DK_RCBR, DK_GRV,  DK_PIPE,
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_F1,   KC_F2,   DK_SLSH,    DK_LPRN,    DK_RPRN, DK_EQL,  DK_ARNG,
+    _______, _______, _______, _______, _______, KC_F3,   KC_F4,   DK_QUES,    DK_LBRC,    DK_RBRC, DK_CIRC, DK_OSTR,
+    _______, _______, _______, _______, _______, KC_F5,   KC_F6,   DK_ASTR,    DK_LCBR,    DK_RCBR, DK_GRV,  DK_PIPE,
     _______, _______, _______, _______, _______, _______, _______, _______,    _______,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   (  |   )  | Bksp |
+ * |   `  |   1  |   2  |   3  |   4  |  F7  |  F8  |   7  |   8  |   (  |   )  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+ * |      |      |      |      |      |  F9  |  F10 |   -  |   =  |   [  |   ]  |  \   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |   {  |   }  |      |
+ * |      |      |      |      |      |  F11 |  F12 |ISO # |ISO / |   {  |   }  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |      |      |      |      | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_plaid_grid(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    DK_LPRN, DK_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  DK_LBRC, DK_RBRC, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, DK_LCBR, DK_RCBR, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_F7,   KC_F8,    KC_7,    KC_8,    DK_LPRN, DK_RPRN, KC_BSPC,
+    _______, _______, _______, _______, _______, KC_F9,   KC_F10,  KC_MINS, KC_EQL,  DK_LBRC, DK_RBRC, KC_BSLS,
+    _______, _______, _______, _______, _______, KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, DK_LCBR, DK_RCBR, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Numbers
