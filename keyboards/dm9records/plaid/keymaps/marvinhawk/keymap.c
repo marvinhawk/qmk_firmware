@@ -20,24 +20,15 @@
 
 enum plaid_layers {
   _QWERTY,
-  _COLEMAK,
-  _DVORAK,
   _LOWER,
   _RAISE,
   _NUM,
   _NAV,
-  _PLOVER,
-  _DK,
   _ADJUST
 };
 
 enum plaid_keycodes {
   QWERTY = SAFE_RANGE,
-  COLEMAK,
-  DVORAK,
-  PLOVER,
-  DK,
-  EXT_PLV,
   LED_1,
   LED_2,
   LED_3,
@@ -50,15 +41,10 @@ enum plaid_keycodes {
   LED_0
 };
 
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
+#define LOWER LT(_LOWER, KC_BSPC)
+#define RAISE LT(_RAISE, KC_SPC)
+#define ENT_NUM LT(_NUM, KC_ENT)
 
-#define SPC_NUM LT(_NUM, KC_SPC)
-#define ESC_NAV LT(_NAV, KC_ESC)
-
-#define ENT_SFT MT(MOD_RSFT, KC_ENT)
-#define LABK_SFT MT(MOD_LSFT, DK_LABK)
-#define TAB_GUI MT(MOD_LGUI, KC_TAB)
 #define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LSFT_T(KC_D)
@@ -66,7 +52,11 @@ enum plaid_keycodes {
 #define HOME_J RCTL_T(KC_J)
 #define HOME_K RSFT_T(KC_K)
 #define HOME_L RALT_T(KC_L)
-#define HOME_AE RGUI_T(DK_AE)
+#define NAV_AE LT(_NAV, DK_AE)
+
+// Lock (Pop-OS)
+#define LOCK G(KC_ESC)
+
 
 // array of keys considered modifiers for led purposes
 const uint16_t modifiers[] = {
@@ -94,172 +84,99 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |   Å  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   Æ  |   Ø  |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |   <  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+ * |   Q  |   W  |   E  |   R  |   T  |      |      |   Y  |   U  |   I  |   O  |   P  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | Tab  |Lower | Bksp |Space |Raise | Left | Down |  Up  |Right |
+ * |   A  |   S  |   D  |   F  |   G  |      |      |   H  |   J  |   K  |   L  |   Æ  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |   Z  |   X  |   C  |   V  |   B  |      |      |   N  |   M  |   ,  |   .  |   -  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |  Esc | Tab  | Bspc |      |      |Enter |Space |Delete|      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
-    KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    DK_ARNG,
-    ESC_NAV,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_AE, DK_OSTR,
-    LABK_SFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  DK_MINS, ENT_SFT,
-    KC_LCTL,  KC_RALT, KC_LALT, TAB_GUI, LOWER,   KC_BSPC, SPC_NUM, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-/* Colemak
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   -  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_COLEMAK] = LAYOUT_plaid_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-/* Dvorak
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   "  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_DVORAK] = LAYOUT_plaid_grid(
-    KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
-    KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT ,
-    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
+    HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,  XXXXXXX, XXXXXXX, ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, XXXXXXX
 ),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |      |   /  |   (  |   )  |   =  |   Å  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+ * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |      |   ?  |   [  |   ]  |   ^  |   Ø  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |      |   *  |   {  |   }  |   `  |   |  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |Enter |Space | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_plaid_grid(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  KC_ENT,
-    _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, DK_SLSH,    DK_LPRN,    DK_RPRN, DK_EQL,  DK_ARNG,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   DK_QUES,    DK_LBRC,    DK_RBRC, DK_CIRC, DK_OSTR,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  DK_ASTR,    DK_LCBR,    DK_RCBR, DK_GRV,  DK_PIPE,
+    _______, _______, _______, _______, _______, _______, _______, _______,    _______,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   7  |   8  |   9  |   (  |   )  |Delete|
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   (  |   )  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |   4  |   5  |   6  |   [  |   ]  |  \   |
+ * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |   1  |   2  |   3  |   {  |   }  |      |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |   {  |   }  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |   0  | Pg Dn| Pg Up| Play |
+ * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_plaid_grid(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_7,    KC_8,    KC_9,    DK_LPRN, DK_RPRN, KC_DEL,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_4,    KC_5,    KC_6,    DK_LBRC, DK_RBRC, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_1,    KC_2,    KC_3,    DK_LCBR, DK_RCBR, KC_ENT,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_PGDN, KC_PGUP, KC_MPLY
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    DK_LPRN, DK_RPRN, KC_BSPC,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  DK_LBRC, DK_RBRC, KC_BSLS,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, DK_LCBR, DK_RCBR, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Numbers
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |   7  |   8  |   9  |      |      |Delete|
+ * |      |      |      |      |      |      |      |      |   7  |   8  |   9  |Delete|
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |   4  |   5  |   6  |      |      |      |
+ * |      |      |      |      |      |      |      |      |   4  |   5  |   6  |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |   1  |   2  |   3  |      |      |      |
+ * |      |      |      |      |      |      |      |      |   1  |   2  |   3  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |   0  |      |      |      |      |
+ * |      |      |      |      |      |             |      |      |   0  |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_NUM] = LAYOUT_plaid_grid(
-    _______, _______, _______, _______, _______, _______,    KC_7,    KC_8,    KC_9, _______, _______, KC_DEL,
-    _______, _______, _______, _______, _______, _______,    KC_4,    KC_5,    KC_6, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,    KC_1,    KC_2,    KC_3, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,    KC_0, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, _______, _______,    XXXXXXX,    KC_7,    KC_8,    KC_9,  KC_DEL,
+    _______, _______, _______, _______, _______, _______, _______,    XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX,
+    _______, _______, _______, _______, _______, _______, _______,    XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,
+    _______, _______, _______, _______, _______, _______, _______,    _______, _______,    KC_0, _______, _______
 ),
 
 /* Navigation
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      | Home |  End |Delete|      |      |
+ * |      | MS-LC| MS-U | MS-RC|      |      |      |      | Esc  |      |      |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      | Left | Down |  Up  |Right |      |
+ * |      | MS-L | MS-D | MS-R |      |      |      | Left | Down |  Up  |Right |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      | Pg Dn| Pg Up|      |      |
+ * |      |      |      |      |      |      |      | Home | Pg Dn| Pg Up| End  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_NAV] = LAYOUT_plaid_grid(
-    _______, _______, _______, _______, _______, _______, _______, KC_HOME,  KC_END,  KC_DEL, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_PGDN, KC_PGUP, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-),
-
-/* Plover layer (http://opensteno.org)
- * ,-----------------------------------------------------------------------------------.
- * |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   S  |   T  |   P  |   H  |   *  |   *  |   F  |   P  |   L  |   T  |   D  |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   S  |   K  |   W  |   R  |   *  |   *  |   R  |   B  |   G  |   S  |   Z  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Exit |      |      |   A  |   O  |             |   E  |   U  |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
-
-[_PLOVER] = LAYOUT_plaid_grid(
-    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1   ,
-    XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-    XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    EXT_PLV, XXXXXXX, XXXXXXX, KC_C,    KC_V,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    XXXXXXX, XXXXXXX, XXXXXXX
-),
-
-/* Danish
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |  Å   |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   Æ  |  Ø   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   -  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower | Bksp |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_DK] = LAYOUT_plaid_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    DK_ARNG,
-    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    DK_AE,   DK_OSTR,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  DK_MINS, MT(MOD_RSFT, KC_ENT),
-    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_BSPC,  KC_SPC, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______, _______, _______, KC_ESC,  _______,  _______, _______,
+    _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______,
+    _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,   _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______
 ),
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |Reset |      |      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|Plover|  DK  |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -268,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_plaid_grid(
     RESET,LED_1, LED_2, LED_3, LED_4, LED_5,LED_6, LED_7, LED_8, LED_9, LED_0,KC_DEL ,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  PLOVER,  DK,
+    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______, _______,  _______,  _______,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
@@ -379,45 +296,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
-      }
-      return false;
-      break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_COLEMAK);
-      }
-      return false;
-      break;
-    case DVORAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_DVORAK);
-      }
-      return false;
-      break;
-    case DK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_DK);
-      }
-      return false;
-      break;
-    case PLOVER:
-      if (record->event.pressed) {
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_PLOVER);
-        if (!eeconfig_is_enabled()) {
-            eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-      break;
-    case EXT_PLV:
-      if (record->event.pressed) {
-        layer_off(_PLOVER);
       }
       return false;
       break;
