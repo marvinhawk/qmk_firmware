@@ -45,7 +45,7 @@ enum plaid_keycodes {
 #define RAISE LT(_RAISE, KC_SPC)
 #define ENT_NUM LT(_NUM, KC_ENT)
 
-#define HOME_A LGUI_T(KC_A)
+#define HOME_Z LGUI_T(KC_Z)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LSFT_T(KC_D)
 #define HOME_F LCTL_T(KC_F)
@@ -90,13 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |      |      |   N  |   M  |   ,  |   .  |   -  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |  Esc | Tab  | Bspc |      |      |Enter |Space |Delete|      |      |
+ * | Lock |      |  Esc | Tab  | Bspc |      |      |Enter |Space |Delete|      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
-    HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    KC_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
+    HOME_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
     LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,  XXXXXXX, XXXXXXX, ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, XXXXXXX
 ),
 
