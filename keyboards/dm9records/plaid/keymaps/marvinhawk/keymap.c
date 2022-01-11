@@ -102,19 +102,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |  F1  |  F2  |   /  |   (  |   )  |   =  |   Å  |
+ * |   §  |   !  |  \"  |   #  |   ¤  |  F1  |  F2  |   /  |   +  |   =  |   ?  |   Å  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |  F3  |  F4  |   ?  |   [  |   ]  |   ^  |   Ø  |
+ * |   |  |   %  |   &  |   *  |   \  |  F3  |  F4  |   {  |   (  |   )  |   }  |   Ø  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |  F5  |  F6  |   *  |   {  |   }  |   `  |   |  |
+ * |   ^  |  ..  |   '  |   ~  |   `  |  F5  |  F6  |   <  |   [  |   ]  |   >  |   '  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_plaid_grid(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_F1,   KC_F2,   DK_SLSH,    DK_LPRN,    DK_RPRN, DK_EQL,  DK_ARNG,
-    _______, _______, _______, _______, _______, KC_F3,   KC_F4,   DK_QUES,    DK_LBRC,    DK_RBRC, DK_CIRC, DK_OSTR,
-    _______, _______, _______, _______, _______, KC_F5,   KC_F6,   DK_ASTR,    DK_LCBR,    DK_RCBR, DK_GRV,  DK_PIPE,
+    DK_SECT, DK_EXLM, DK_DQUO, DK_HASH, DK_CURR, KC_F1,   KC_F2,   DK_SLSH,    DK_PLUS,    DK_EQL, DK_QUES,  DK_ARNG,
+    DK_PIPE, DK_PERC, DK_AMPR, DK_ASTR, DK_BSLS, KC_F3,   KC_F4,   DK_LCBR,    DK_LPRN,    DK_RPRN, DK_RCBR, DK_OSTR,
+    DK_CIRC, DK_DIAE, DK_ACUT, DK_TILD, DK_GRV,  KC_F5,   KC_F6,   DK_LABK,    DK_LBRC,    DK_RBRC, DK_RABK, DK_QUOT,
     _______, _______, _______, _______, _______, _______, _______, _______,    _______,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
