@@ -37,7 +37,7 @@ enum layers {
 #define HOME_J RCTL_T(KC_J)
 #define HOME_K RSFT_T(KC_K)
 #define HOME_L RALT_T(KC_L)
-#define NAV_AE LT(_NAV, DK_AE)
+#define NAV_QT LT(_NAV, DK_QUOT)
 
 // Lock (Pop-OS)
 #define LOCK G(KC_ESC)
@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |  Q   |  W   |  E   |  R   |  T   |      | |      |  Y   |  U   |  I   |  O   |  P   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |  A   |  S   |  D   |  F   |  G   |      | |      |  H   |  J   |  K   |  L   |  ;   |
+ * |  A   |  S   |  D   |  F   |  G   |      | |      |  H   |  J   |  K   |  L   |  '   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |  Z   |  X   |  C   |  V   |  B   |      | |      |  N   |  M   |  ,   |  .   |  /   |
+ * |  Z   |  X   |  C   |  V   |  B   |      | |      |  N   |  M   |  ,   |  .   |  -   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * | Lock |      | Esc  | Bspc | Tab  |      | |      | Enter| Space|  Del |      |      |
  * `-----------------------------------------' `-----------------------------------------'
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_ortho_5x12(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX, XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
-    KC_A,    HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_AE,
+    KC_A,    HOME_S,  HOME_D,  HOME_F,  KC_G,    XXXXXXX, XXXXXXX, KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_QT,
     HOME_Z,  KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
     LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,  XXXXXXX, XXXXXXX, ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, XXXXXXX
 ),
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     DK_SECT, DK_EXLM, DK_DQUO, DK_HASH, DK_CURR, KC_F1,   KC_F2,   DK_SLSH, DK_PLUS, DK_EQL,  DK_QUES, DK_ARNG,
     DK_PIPE, DK_PERC, DK_AMPR, DK_ASTR, DK_BSLS, KC_F3,   KC_F4,   DK_LCBR, DK_LPRN, DK_RPRN, DK_RCBR, DK_OSTR,
-    DK_CIRC, DK_DIAE, DK_ACUT, DK_TILD, DK_GRV,  KC_F5,   KC_F6,   DK_LABK, DK_LBRC, DK_RBRC, DK_RABK, DK_QUOT,
+    DK_CIRC, DK_DIAE, DK_ACUT, DK_TILD, DK_GRV,  KC_F5,   KC_F6,   DK_LABK, DK_LBRC, DK_RBRC, DK_RABK, DK_AE,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
