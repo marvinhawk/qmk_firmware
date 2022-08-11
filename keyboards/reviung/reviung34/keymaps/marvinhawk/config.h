@@ -29,3 +29,4 @@
 // /*== all animations enable ==*/
   #define RGBLIGHT_ANIMATIONS
 #endif
+# define IGNORE_MOD_TAP_INTERRUPT
