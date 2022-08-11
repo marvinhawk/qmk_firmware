@@ -29,7 +29,7 @@ enum layer_names {
 #define RAISE LT(_RAISE, KC_SPC)
 #define ENT_NUM LT(_NUM, KC_ENT)
 
-#define HOME_A LGUI_T(KC_Z)
+#define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LSFT_T(KC_D)
 #define HOME_F LCTL_T(KC_F)
