@@ -37,11 +37,12 @@ enum layer_names {
 #define HOME_K RSFT_T(KC_K)
 #define HOME_L RALT_T(KC_L)
 #define NAV_QT LT(_NAV, DK_QUOT)
+#define NAV_Q  LT(_NAV, KC_Q)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_reviung34(
-    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+    NAV_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
     HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,          KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_QT,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    KC_COMM,   KC_DOT,   KC_SLASH,
                                LOWER,   KC_TAB,        ENT_NUM, RAISE
@@ -62,17 +63,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NUM] = LAYOUT_reviung34(
-    _______,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-    KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,       XXXXXXX, XXXXXXX, KC_GRV,  KC_TILD, KC_COLN,
-    KC_LSFT, KC_ESC,  KC_RGUI, KC_LALT, KC_DQUO,       KC_TAB,  XXXXXXX, KC_RCTL, KC_RALT, KC_DEL,
+    _______,    KC_2,    KC_3,    KC_4,    KC_5,       _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,       XXXXXXX, XXXXXXX, KC_GRV,  KC_TILD, KC_COLN,
+    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
                                _______, KC_DEL,        _______, _______
   ),
 
   [_NAV] = LAYOUT_reviung34(
-    _______,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-    KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,       XXXXXXX, XXXXXXX, KC_GRV,  KC_TILD, KC_COLN,
-    KC_LSFT, KC_ESC,  KC_RGUI, KC_LALT, KC_DQUO,       KC_TAB,  XXXXXXX, KC_RCTL, KC_RALT, KC_DEL,
-                               _______, KC_DEL,        _______, _______
+    _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
+    _______, _______, _______, _______, _______,       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+    _______, _______, _______, _______, _______,       KC_HOME, KC_PGDN, KC_PGUP,  KC_END, _______,
+                               _______, KC_BTN2,       KC_BTN1, KC_BTN3
   ),
 
   [_ADJUST] = LAYOUT_reviung34(
