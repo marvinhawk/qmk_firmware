@@ -49,15 +49,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT_reviung34(
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
-    KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_SCLN,
-    KC_LSFT, KC_ESC,  KC_LGUI, KC_LALT, KC_QUOT,       KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_BSPC,
-                               _______, _______,       _______, _______
+    DK_SECT, DK_EXLM, DK_DQUO, DK_HASH, DK_CURR,       DK_SLSH, DK_PLUS, DK_EQL,  DK_QUES, DK_ARNG,
+    DK_PIPE, DK_PERC, DK_AMPR, DK_ASTR, DK_BSLS,       DK_LCBR, DK_LPRN, DK_RPRN, DK_RCBR, DK_OSTR,
+    DK_CIRC, DK_DIAE, DK_ACUT, DK_TILD, DK_GRV,        DK_LABK, DK_LBRC, DK_RBRC, DK_RABK, DK_AE,
+                               _______, _______,       KC_ESC,  _______
   ),
   
   [_RAISE] = LAYOUT_reviung34(
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-    KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,       XXXXXXX, XXXXXXX, KC_GRV,  KC_TILD, KC_COLN,
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
+    KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,       XXXXXXX, XXXXXXX, KC_GRV,  KC_TILD, KC_COLN,
     KC_LSFT, KC_ESC,  KC_RGUI, KC_LALT, KC_DQUO,       KC_TAB,  XXXXXXX, KC_RCTL, KC_RALT, KC_DEL,
                                _______, KC_DEL,        _______, _______
   ),
