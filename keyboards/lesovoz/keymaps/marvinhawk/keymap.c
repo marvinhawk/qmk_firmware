@@ -22,8 +22,7 @@ enum lesovoz_layers {
   _LOWER,
   _RAISE,
   _NUM,
-  _NAV,
-  _ADJUST
+  _NAV
 };
 
 #define LOWER LT(_LOWER, KC_BSPC)
@@ -59,15 +58,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
   [_QWERTY] = LAYOUT(
-      NAV_Q,   KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-      HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,       KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_QT,
-      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-      LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,     ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, KC_MUTE
-),
-
+    NAV_Q,   KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+    HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,       KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_QT,
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,     ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, KC_MUTE
+  ),
+/* Lower
+ * ,-----------------------------------------------------------------------------------.
+ * |   §  |   !  |  \"  |   #  |   ¤  |             |   /  |   +  |   =  |   ?  |   Å  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |   |  |   %  |   &  |   *  |   \  |             |   {  |   (  |   )  |   }  |   Ø  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |   ^  |  ..  |   '  |   ~  |   `  |             |   <  |   [  |   ]  |   >  |   Æ  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      | Vol- | Vol+ | Play |
+ * `-----------------------------------------------------------------------------------'
+ */
   [_LOWER] = LAYOUT(
-  	  KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0,
-  	  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_ENT,
-  	  KC_VOLD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MINS, KC_EQL,
-  	  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS )
+    DK_SECT, DK_EXLM, DK_DQUO, DK_HASH, DK_CURR,    DK_SLSH,    DK_PLUS,    DK_EQL,  DK_QUES, DK_ARNG,
+    DK_PIPE, DK_PERC, DK_AMPR, DK_ASTR, DK_BSLS,    DK_LCBR,    DK_LPRN,    DK_RPRN, DK_RCBR, DK_OSTR,
+    DK_CIRC, DK_DIAE, DK_ACUT, DK_TILD, DK_GRV,     DK_LABK,    DK_LBRC,    DK_RBRC, DK_RABK, DK_AE,
+    _______, _______, _______, _______, _______,    _______,    _______,    KC_VOLD, KC_VOLU, KC_MPLY
+  )
 };
