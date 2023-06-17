@@ -116,5 +116,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,    XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,
     KC_0,    KC_1,    KC_2,    KC_3,    XXXXXXX,    XXXXXXX, KC_1,    KC_2,    KC_3,    KC_0,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, _______,    _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
+  ),
+  
+/* Navigation
+ * ,-----------------------------------------------------------------------------------.
+ * |      | Left | Down |  Up  |Right |             | MS-L | MS-D | MS-U | MS-R |      |
+ * |------+------+------+------+------+             +------+------+------+------+------|
+ * |      | MS-L | MS-D | MS-U | MS-R |             | Left | Down |  Up  |Right |      |
+ * |------+------+------+------+------+             +------+------+------+------+------|
+ * |      |      |      |      |      |             | Home | Pg Dn| Pg Up| End  |      |
+ * |------+------+------+------+------+             +------+------+------+------+------|
+ * |      |      |      |      |      |             | Btn1 | Btn2 | Btn3 |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+  [_NAV] = LAYOUT(
+    _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
+    _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+    _______, _______, _______, _______, _______,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+    _______, _______, _______, _______, _______,    KC_BTN1, KC_BTN2, KC_BTN3, _______, _______
   )
 }; 
