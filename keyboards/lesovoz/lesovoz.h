@@ -39,5 +39,5 @@
 { K30, K31, K32, K33, K34, K35, K36, K37, K38, K39, }  \
 }
 
-#define LED1 D7
-#define LED2 B0
+// #define LED1 D7
+// #define LED2 B0
