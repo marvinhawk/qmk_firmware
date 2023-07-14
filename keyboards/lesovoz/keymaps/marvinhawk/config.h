@@ -1,3 +1,5 @@
 #define ENCODERS_PAD_A { D7 }
 #define ENCODERS_PAD_B { B0 }
 #define ENCODER_RESOLUTION 4
+
+#define IGNORE_MOD_TAP_INTERRUPT
