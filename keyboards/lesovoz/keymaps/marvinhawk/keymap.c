@@ -61,10 +61,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     NAV_Q,   KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
     HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,       KC_H,    HOME_J,  HOME_K,  HOME_L,  NAV_QT,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-    LOCK,    XXXXXXX, KC_ESC,  LOWER,   KC_TAB,     ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, KC_MUTE
-  ),
-/* Lower
- * ,-----------------------------------------------------------------------------------.
+    LOCK,    KC_CAPS, KC_ESC,  LOWER,   KC_TAB,     ENT_NUM, RAISE,   KC_DEL,  XXXXXXX, KC_MUTE), 
+ 
+ /* Lower 
+ * ,-----------------------------------------------------------------------------------. 
  * |   §  |   !  |  \"  |   #  |   ¤  |             |   /  |   +  |   =  |   ?  |   Å  |
  * |------+------+------+------+------+             +------+------+------+------+------|
  * |   |  |   %  |   &  |   *  |   \  |             |   {  |   (  |   )  |   }  |   Ø  |
@@ -136,3 +136,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______,    KC_BTN1, KC_BTN2, KC_BTN3, _______, _______
   )
 }; 
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { /* First encoder */
+        if (clockwise) {
+            tap_code(KC_VOLD);
+        } else {
+            tap_code(KC_VOLU);
+        }
+    } else if (index == 1) { /* Second encoder */
+        if (clockwise) {
+            tap_code(KC_WH_D);
+        } else {
+            tap_code(KC_WH_U);
+        }
+    }
+    return false;
+}

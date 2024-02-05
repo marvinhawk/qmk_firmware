@@ -1,5 +1,7 @@
-#define ENCODERS_PAD_A { D7 }
-#define ENCODERS_PAD_B { B0 }
+#define ENCODERS_PAD_A { D7 , B0 }
+#define ENCODERS_PAD_B { B0 , B5 }
 #define ENCODER_RESOLUTION 4
+#define TAP_CODE_DELAY 10
+#define ENCODER_DIRECTION_FLIP
 
 #define IGNORE_MOD_TAP_INTERRUPT
