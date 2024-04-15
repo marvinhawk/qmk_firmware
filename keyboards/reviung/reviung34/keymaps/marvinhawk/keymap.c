@@ -38,6 +38,7 @@ enum layer_names {
 #define HOME_L RALT_T(KC_L)
 #define NAV_QT LT(_NAV, DK_QUOT)
 #define NAV_Q  LT(_NAV, KC_Q)
+#define NAV_Z  LT(_NAV, KC_Z)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -73,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
     _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
     _______, _______, _______, _______, _______,       KC_HOME, KC_PGDN, KC_PGUP,  KC_END, _______,
-                               _______, KC_BTN2,       KC_BTN1, KC_BTN3
+                               KC_BTN2, KC_BTN1,       KC_BTN1, KC_BTN3
   ),
 
   [_ADJUST] = LAYOUT_reviung34(
